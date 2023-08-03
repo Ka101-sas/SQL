@@ -1,0 +1,12 @@
+SELECT
+  N,
+  P,
+  CASE
+    WHEN P IS NULL THEN 'Root'
+    WHEN NOT EXISTS (SELECT * FROM BST WHERE P = N) THEN 'Leaf'
+    ELSE 'Inner'
+  END AS Node_Type
+FROM
+  BST
+ORDER BY
+  N
